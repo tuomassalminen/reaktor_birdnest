@@ -1,63 +1,30 @@
-<script lang="ts">
-	const ws = new WebSocket("ws://localhost:8080", ["json"]);
+<script>
+	import { onMount } from 'svelte';
+	import axios from 'axios';
+	import PilotList from './components/PilotList.svelte';
+	const backedUri = 'http://localhost:3001/pilots';
+	let pilots = undefined;
 
-	ws.addEventListener("open", () => {
-		console.log('connected');
+	onMount(async () => {
+		const response = await axios(backedUri);
+		const result = await response;
+		pilots = result.data;
+		console.log(pilots)
+
 	})
-	
-	let users = [
-		{
-			id: '1',
-			name: 'John'
-		},
-		{
-			id: '2',
-			name: 'John'
-		}
-	]
-
-	$: name = firstName + ' ' + lastName;
-
-	const toggle = () => {
-		color = color === 'blue' ? 'red' : 'blue';
-		showText = !showText;
-		users = [...users, { id: '4', name: 'Jen'}]
-	};
 </script>
 
-<main>
-	<h1 style="color: {color}">Hello {name}!</h1>
-	{#if showText}
-		<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	{:else}
-		<p>No text</p>
-	{/if}
-
-	<button on:click={toggle}>Click</button>
-
-	{#each users as user (user.id)}
-		<h3>{user.id}: {user.name}</h3>
-	{/each}
+<main class="container">
+	<h1>Birdnest drone pilot violations for the last 10 minutes</h1>
+	<PilotList pilots={pilots} />
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	.container {
+		margin: 10rem auto;
+		padding: 0 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 </style>
