@@ -7,7 +7,7 @@ This is a solution for Reaktor developer trainee pre-assignment. Deployed applic
 ### Backend
 
 The backend of this application can be run either in Docker or locally with Node and npm. Docker can be downloaded here https://www.docker.com/products/docker-desktop/. 
-If you haven't installed Node or npm, it can be done easily with nvm by running this script:
+If you haven't installed Node or npm, it can be done easily with nvm. Nvm can be downloaded by running this script:
 
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
