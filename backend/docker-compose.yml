@@ -4,6 +4,7 @@ services:
     container_name: server
     restart: always
     build: .
+    command: npm run dev
     ports:
       - ${PORT}:${PORT}
     depends_on:

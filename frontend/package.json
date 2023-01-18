@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
-    "dev": "cross-env ENV=dev rollup -c -w",
+    "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
     "test": "jest"
   },

@@ -6,14 +6,15 @@ kill_timeout = 5
 processes = []
 
 [env]
-  port = 8080
+  port = 5000
+  env = "production"
 
 [experimental]
   auto_rollback = true
 
 [[services]]
   http_checks = []
-  internal_port = 8080
+  internal_port = 5000
   processes = ["app"]
   protocol = "tcp"
   script_checks = []

@@ -8,4 +8,4 @@ RUN npm ci
 
 USER node
 
-CMD ["npm", "run", "dev"]
+CMD ["node", "src/index.js"]

@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { PORT } = require('./util/config');
 const { connectToDatabase } = require('./util/database');
 const services = require('./services');
 const utils = require('./util/utils');
 const crud = require('./crud');
 const { Pilot } = require('./models');
+const middleware = require('./util/middleware');
 
 const app = express();
 
@@ -16,7 +18,8 @@ const options = {
 };
 
 app.use(cors(options));
-app.use(express.static('build'));
+
+app.use(express.static('public'));
 
 // Fetch drones currently in the zone, catch the illegal drones violating the no-fly zone and return their pilot information.
 app.get('/api/pilots', async (_req, res) => {
@@ -31,9 +34,11 @@ app.get('/api/pilots', async (_req, res) => {
   res.send(pilots);
 });
 
-app.get('/', (_req, res) => {
-  res.send('Hello');
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
+
+app.use(middleware.unknownEndpoint);
 
 const start = async () => {
   await connectToDatabase();

@@ -2,10 +2,9 @@
 	import { onMount } from 'svelte';
 	import axios from 'axios';
 	import PilotList from './components/PilotList.svelte';
-	import utils from './util/utils';
 	let pilots = undefined;
 
-	const backendUri = 'http://localhost:5000/api/pilots' // add "http://localhost:5000 at the beginning when developing"
+	const backendUri = '/api/pilots' // add "http://localhost:5000" at the beginning of the uri when developing
 
 	// Poll the backend server every two seconds for new pilots
 	onMount(async () => {
