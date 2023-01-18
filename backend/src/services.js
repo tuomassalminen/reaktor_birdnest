@@ -16,15 +16,21 @@ const getDrones = async () => {
   return droneList;
 };
 
-const getPilot = async (droneSerialNumber) => {
+const getPilot = async (drone) => {
   let pilot;
   try {
-    const response = await axios(`https://assignments.reaktor.com/birdnest/pilots/${droneSerialNumber}`);
+    const response = await axios(`https://assignments.reaktor.com/birdnest/pilots/${drone.serialNumber[0]}`);
     pilot = response.data;
   } catch (error) {
     console.error(error);
   }
-  return pilot;
+  return {
+    ...pilot,
+    droneSerialNumber: drone.serialNumber[0],
+    latestViolation: new Date(),
+    currentDroneDistance: drone.distance,
+    droneCoords: [drone.positionX[0], drone.positionY[0]]
+  };
 };
 
 module.exports = {
