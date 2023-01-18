@@ -21,7 +21,11 @@ nvm install node
 
 #### Starting the server
 
+Option 1:
+
 Start the server with Docker by running `docker-compose up`
+
+Option 2:
 
 Start the server with npm by first running `npm install` and then `npm run dev`
 
