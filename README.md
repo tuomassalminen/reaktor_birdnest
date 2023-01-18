@@ -1,12 +1,12 @@
-# Birdnest
+# Birdnest :eagle:
 
-This is a solution for Reaktor developer trainee pre-assignment.
+This is a solution for Reaktor developer trainee pre-assignment. Deployed application is running here: https://birdnest-monitor.fly.dev/
 
 ## Running the application
 
-## Backend
+### Backend
 
-The backend of this application can be run either in Docker or locally with Node and npm. Docker can be downloaded [here] (https://www.docker.com/products/docker-desktop/). 
+The backend of this application can be run either in Docker or locally with Node and npm. Docker can be downloaded here https://www.docker.com/products/docker-desktop/. 
 If you haven't installed Node or npm, it can be done easily with nvm by running this script:
 
 ```sh
@@ -19,16 +19,16 @@ Then node can be installed by:
 nvm install node
 ```
 
-### Starting the server
+#### Starting the server
 
 Start the server with Docker by running `docker-compose up`
 
 Start the server with npm by first running `npm install` and then `npm run dev`
 
-If you are not using Docker, you need to create a PostgreSQL database and connect the server to it in the database.js file. [ElephantSQL] (https://www.elephantsql.com/) is a good and easy to use solution for creating such database.
+If you are not using Docker, you need to create a PostgreSQL database and connect the server to it in the database.js file. ElephantSQL https://www.elephantsql.com/ is a good and easy to use solution for creating such database.
 If you use Docker, the database is created in the container and the application connects to it automatically.
 
-## Frontend
+### Frontend
 
 The frontend can be started by running the commands `npm install` and `npm run dev`, provided you have Node and npm installed on your machine.
 
