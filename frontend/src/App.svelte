@@ -2,15 +2,24 @@
 	import { onMount } from 'svelte';
 	import axios from 'axios';
 	import PilotList from './components/PilotList.svelte';
-	const backedUri = 'http://localhost:3001/pilots';
+	import utils from './util/utils';
 	let pilots = undefined;
 
-	onMount(async () => {
-		const response = await axios(backedUri);
-		const result = await response;
-		pilots = result.data;
-		console.log(pilots)
+	const backendUri = 'http://localhost:5000/api/pilots' // add "http://localhost:5000 at the beginning when developing"
 
+	// Poll the backend server every two seconds for new pilots
+	onMount(async () => {
+		const pollNewPilots = async () => {
+			try {
+				const response = await axios(backendUri);
+				const result = await response;
+				pilots = result.data;
+			} catch (e) {
+				console.error("Polling error", e);
+			}
+			setTimeout(pollNewPilots, 2000);
+		}
+		pollNewPilots();
 	})
 </script>
 
@@ -21,7 +30,7 @@
 
 <style>
 	.container {
-		margin: 10rem auto;
+		margin: 3rem auto;
 		padding: 0 1rem;
 		display: flex;
 		flex-direction: column;

@@ -1,16 +1,22 @@
 const { Sequelize } = require('sequelize');
 const config = require('./config');
 
-const sequelize = new Sequelize(
-  config.DB_SCHEMA,
-  config.DB_USER,
-  config.DB_PASSWORD,
-  {
-    host: config.DB_HOST,
-    port: config.DB_PORT,
-    dialect: 'postgres',
-  }
-);
+let sequelize = new Sequelize('postgres://postgres:ykGm7g41juAzjs7@birdnest-monitor-db.internal:5432');
+
+// if (config.NODE_ENV === 'production') {
+//   sequelize = new Sequelize('postgres://postgres:ykGm7g41juAzjs7@birdnest-monitor-db.internal:5432');
+// } else {
+//   sequelize = new Sequelize(
+//     config.DB_SCHEMA,
+//     config.DB_USER,
+//     config.DB_PASSWORD,
+//     {
+//       host: config.DB_HOST,
+//       port: config.DB_PORT,
+//       dialect: 'postgres',
+//     }
+//   );
+// }
 
 const connectToDatabase = async () => {
   try {
