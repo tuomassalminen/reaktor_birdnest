@@ -25,8 +25,9 @@ Start the server with Docker by running `docker-compose up`
 
 Start the server with npm by first running `npm install` and then `npm run dev`
 
-If you are not using Docker, you need to create a PostgreSQL database and connect the server to it in the database.js file. ElephantSQL https://www.elephantsql.com/ is a good and easy to use solution for creating such database.
-If you use Docker, the database is created in the container and the application connects to it automatically.
+If you are not using Docker, you need to create a PostgreSQL database and connect the server with environmental variable DATABASE_URL. ElephantSQL https://www.elephantsql.com/ is a good and easy to use solution for creating such database.
+
+If you use Docker, the database is created in the container. To connect to it, a specific line in database.js file has to be commented
 
 ### Frontend
 
