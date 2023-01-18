@@ -7,7 +7,7 @@ This is a solution for Reaktor developer trainee pre-assignment. Deployed applic
 ### Backend
 
 The backend of this application can be run either in Docker or locally with Node and npm. Docker can be downloaded here https://www.docker.com/products/docker-desktop/. 
-If you haven't installed Node or npm, it can be done easily with nvm by running this script:
+If you haven't installed Node or npm, it can be done easily with nvm. Nvm can be downloaded by running this script:
 
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
@@ -21,13 +21,17 @@ nvm install node
 
 #### Starting the server
 
+Option 1:
+
 Start the server with Docker by running `docker-compose up`
+
+Option 2:
 
 Start the server with npm by first running `npm install` and then `npm run dev`
 
-If you are not using Docker, you need to create a PostgreSQL database and connect the server with environmental variable DATABASE_URL. ElephantSQL https://www.elephantsql.com/ is a good and easy to use solution for creating such database.
+If you are not using Docker, you need to create a PostgreSQL database and connect to it with environmental variable DATABASE_URL. ElephantSQL https://www.elephantsql.com/ is a good and easy to use solution for creating such database.
 
-If you use Docker, the database is created in the container. To connect to it, a specific line in database.js file has to be commented
+If you use Docker, the database is created in the container. To connect to it, a specific line in database.js file has to be commented out.
 
 ### Frontend
 
