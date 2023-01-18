@@ -1,19 +1,19 @@
 const { Sequelize } = require('sequelize');
 const config = require('./config');
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, { dialect: 'postgres' });;
+let sequelize = new Sequelize(
+  config.DB_SCHEMA,
+  config.DB_USER,
+  config.DB_PASSWORD,
+  {
+    host: config.DB_HOST,
+    port: config.DB_PORT,
+    dialect: 'postgres',
+  }
+);
 
-// Use this when connecting to docker locally
-// const sequelize = new Sequelize(
-//   config.DB_SCHEMA,
-//   config.DB_USER,
-//   config.DB_PASSWORD,
-//   {
-//     host: config.DB_HOST,
-//     port: config.DB_PORT,
-//     dialect: 'postgres',
-//   }
-// );
+sequelize = new Sequelize(process.env.DATABASE_URL, { dialect: 'postgres' }); // Comment this out when running the application on docker
+
 
 const connectToDatabase = async () => {
   try {
